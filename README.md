@@ -14,7 +14,7 @@ gp-voice-mail
 
 ##Ribbon Cable Notes
 
--Green wire LED supply
--Blue wire LED ground
--Yellow wire Switch
--Orange wire Switch
+- Green wire LED supply
+- Blue wire LED ground
+- Yellow wire Switch
+- Orange wire Switch
