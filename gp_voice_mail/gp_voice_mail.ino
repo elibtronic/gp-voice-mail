@@ -7,6 +7,11 @@
 //
 
 int bState = 0;
+int lLevel = 0;
+int is_triggered = 0;
+const int tThreshold = 50;
+const int pInterval = 3000;
+
 
 void setup(){
  
@@ -16,9 +21,7 @@ void setup(){
  digitalWrite(7,HIGH); //Pull UP Dammit
 
  Serial.println("Init");
- start_led();
- 
-  
+ start_led(); 
 }
 
 void start_led()
@@ -35,15 +38,39 @@ void start_led()
 }
 
 void loop(){
-  bState = digitalRead(7);
-  Serial.println(bState);
-  if (bState == LOW)
-    digitalWrite(13,HIGH);
-  else
-    digitalWrite(13,LOW);
- 
 
+
+  delay(pInterval);
+  Serial.println(analogRead(0));
   
+  if(is_triggered == 0){
+    if(analogRead(0) > tThreshold)
+    {
+      digitalWrite(13,HIGH);
+      is_triggered = 1;
+      Serial.println("triggered");
+    }
+  }
+//  if (is_triggered == 1){
+//    if(digitalRead(7) == HIGH){
+//        digitalWrite(13,LOW);
+//        Serial.println("reset");
+//        is_triggered = 0;
+//    }
+//  }
+  if ((digitalRead(7) == LOW) && (is_triggered == 1 )){
+   digitalWrite(13,LOW);
+   is_triggered = 0;
+   Serial.println("reset");
+    
+  }
   
+//  bState = digitalRead(7);
+//  if (bState == LOW)
+//    digitalWrite(13,HIGH);
+//  else
+//    digitalWrite(13,LOW);
+   
+
 }
 
