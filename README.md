@@ -13,7 +13,10 @@ gp-voice-mail
 - Wire
 	
 	
+##PreReqs
+- [PySerial](https://pypi.python.org/pypi/pyserial) *Comes out of the can with Linux*
 
+	
 ##Ribbon Cable Notes
 
 - Green wire LED supply
