@@ -15,6 +15,7 @@ gp-voice-mail
 	
 ##PreReqs
 - [PySerial](https://pypi.python.org/pypi/pyserial) *Comes out of the can with Linux*
+- [Python-tk](http://tkinter.unpythonic.net/wiki/How_to_install_Tkinter) *On Ubuntu apt-get install python-tk, if not already done so
 
 	
 ##Ribbon Cable Notes
