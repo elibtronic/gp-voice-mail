@@ -1,0 +1,15 @@
+
+
+# Fill in values are rename to settings.py
+#
+#
+
+# on linux probably something like "ttyACM0"
+# on windows some thing like
+
+#How often to check for serial communication
+pollInterval = 1500
+
+#Create using pushover account
+pushOver_token = ""
+pushOver_user = ""

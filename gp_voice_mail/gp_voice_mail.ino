@@ -49,25 +49,23 @@ void loop(){
       digitalWrite(13,HIGH);
       is_triggered = 1;
       //Serial.println("triggered");
-      Serial.println("1");
+      Serial.print("1");
       Serial.flush();
     }
   }
   if ((digitalRead(7) == LOW) && (is_triggered == 1 )){
    digitalWrite(13,LOW);
    is_triggered = 0;
-   Serial.println("0");
+   Serial.print("0");
    Serial.flush();
    //Serial.println("reset");
     
   }
   if (is_triggered == 1){
-    Serial.println("1");
+    Serial.print("1");
     Serial.flush();
   }
-  else
-    Serial.println("0");
-    Serial.flush();
+
 
 }
 
