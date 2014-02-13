@@ -5,10 +5,18 @@
 // LED on Digital 13
 // PhotoCell on A0
 //
+// Note to self
+//
+// - Green wire LED supply
+// - Blue wire LED ground
+// - Yellow wire Switch
+// - Orange wire Switch
+//
 
 int bState = 0;
 int lLevel = 0;
 int is_triggered = 0;
+//increase for higher sensitivity, decrease for lower sensitivity
 const int tThreshold = 50;
 const int pInterval = 1500;
 

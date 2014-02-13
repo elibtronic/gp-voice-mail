@@ -14,8 +14,8 @@ onHold = 0
 
 # on linux probably something like serial.Serial("ttyACM0")
 # on windows some thing like serial.Serial("COM4",9600,timeout=1)
-
 ser = serial.Serial("COM4",9600,timeout=1)
+
 root = Tk()
 ts_label = Label(root,text=ts,font=("Helvetica", 16),anchor="center")
 ts_label.pack(fill=X)
@@ -54,17 +54,19 @@ def checkForSignal():
 def signal_PO():
 	global ts
 	ts = datetime.datetime.now().strftime('%Y-%m-%d\n%H:%M:%S')
-	pOverMessage = "You have a voice mail!" + ts
+	pOverMessage = "You have a voice mail! " + ts
 	label_message = "You have a\nvoice mail!\n" + ts
 	ts_label.config(text=label_message)
-	#conn = httplib.HTTPSConnection("api.pushover.net:443")
-	#conn.request("POST", "/1/messages.json",
-		#urllib.urlencode({
-		#"token": pushOver_token,
-		#"user": pushOver_user,
-		#"message": pOverMessage,
-	#}), { "Content-type": "application/x-www-form-urlencoded" })
-	#conn.getresponse()
+	#Following will trigger a pushover.net push notification
+	#Change the next few lines to whatever else suits your fancy
+	conn = httplib.HTTPSConnection("api.pushover.net:443")
+	conn.request("POST", "/1/messages.json",
+		urllib.urlencode({
+		"token": pushOver_token,
+		"user": pushOver_user,
+		"message": pOverMessage,
+	}), { "Content-type": "application/x-www-form-urlencoded" })
+	conn.getresponse()
 
 root.title("gp Voice Mail")
 root.geometry("200x200")
