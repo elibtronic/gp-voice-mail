@@ -39,5 +39,5 @@ MPOW has a voice mail system that only turns the message indicator LED on once v
 ![gpVoicemail no message](images/gp_VoiceMail_no_message.PNG)
 ![gpVoicemail message](images/gp_VoiceMail_message.PNG)
 ![gpVoicemail pushOver New App](images/pushover_new_app.PNG)
-![gpVoicemail push notification](images/pushover_screenshot.PNG)
+![gpVoicemail push notification](images/pushover_screenshot.png)
 
