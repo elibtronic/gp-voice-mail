@@ -4,17 +4,29 @@
 #
 from settings import *
 from Tkinter import *
+from tkMessageBox import showerror
 import httplib, urllib, time, datetime
 import serial
+import serial.tools.list_ports
 
 ts = "No\n Voice Mail."
 didTrig = 0
 onHold = 0
 
 
-# on linux probably something like serial.Serial("ttyACM0")
-# on windows some thing like serial.Serial("COM4",9600,timeout=1)
-ser = serial.Serial("COM4",9600,timeout=1)
+#Try to find the Arduino by looking at the descriptions of the devices
+try:
+        for p in serial.tools.list_ports.comports():
+                if re.search('Arduino Uno',str(p[1])):
+                        portString = str(p[0])     
+        ser = serial.Serial(portString,9600,timeout=0)
+except:
+        root = Tk()
+        showerror("Arduino Error","Couldn't Find Arduino")
+        root.destroy()
+        sys.exit()
+
+
 
 root = Tk()
 ts_label = Label(root,text=ts,font=("Helvetica", 16),anchor="center")
