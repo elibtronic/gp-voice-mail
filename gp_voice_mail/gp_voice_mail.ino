@@ -18,8 +18,10 @@ int lLevel = 0;
 int is_triggered = 0;
 //increase for higher sensitivity, decrease for lower sensitivity
 const int tThreshold = 50;
+//How Often to start the test loop, all the time is probably overkill
 const int pInterval = 1500;
-
+//number of seconds the led on the phone has to be on for
+const int led_on_for = 5;
 
 void setup(){
  
@@ -27,8 +29,6 @@ void setup(){
  pinMode(13, OUTPUT);
  pinMode(7, INPUT);
  digitalWrite(7,HIGH); //Pull UP Dammit
-
- //Serial.println("Init");
  start_led(); 
 }
 
@@ -47,33 +47,33 @@ void start_led()
 
 void loop(){
 
-
   delay(pInterval);
-  //Serial.println(analogRead(0));
-  
-  if(is_triggered == 0){
-    if(analogRead(0) > tThreshold)
-    {
+  if (is_triggered == 0){
+  for (int i = 0; i < led_on_for; i++){
+      delay(1000);
+      if (analogRead(0) < tThreshold){
+        break;
+      }
+      //Only here if photocell triggered above threshold for led_on_for
       digitalWrite(13,HIGH);
       is_triggered = 1;
-      //Serial.println("triggered");
-      Serial.print("1");
-      Serial.flush();
     }
   }
-  if ((digitalRead(7) == LOW) && (is_triggered == 1 )){
+  //Reset if button is pressed and if checker has been triggered
+  if ((digitalRead(7) == LOW) && (is_triggered == 1)){
    digitalWrite(13,LOW);
    is_triggered = 0;
-   Serial.print("0");
-   Serial.flush();
-   //Serial.println("reset");
-    
   }
+  
+  //If triggered write a 1, else 0 which means no voice mail
   if (is_triggered == 1){
     Serial.print("1");
-    Serial.flush();
   }
-
+  else
+  {
+    Serial.print("0");
+  }
+  Serial.flush();
 
 }
 
