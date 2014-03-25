@@ -82,6 +82,7 @@ def signal_PO():
 
 root.title("gp Voice Mail")
 root.geometry("200x200")
+root.iconbitmap("gP.ico")
 mFrame = Frame(root, width=150, height=150)
 mFrame.pack()
 root.after(pollInterval,checkForSignal)
